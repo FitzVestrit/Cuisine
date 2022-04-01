@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajout{% endblock %}
+{% block body %}
+    <header>{% include ('header.html.twig') %}</header>
+
+<div class="detail_div">
+    {{ form_start(FormRecette) }}
+    {{ form_widget(FormRecette) }}
+    <button>Envoyer</button>
+    {{ form_end(FormRecette) }}
+</div>
+{% endblock %}

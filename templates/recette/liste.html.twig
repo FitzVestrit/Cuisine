@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste{% endblock %}
+{% block body %}
+    <header>{% include ('header.html.twig') %}</header>
+
+<nav class="liste_nav">
+    <form class="liste_form" action="{{ path('recette_trinom')}}">
+        <input type="submit"  value="Tri par nom">
+    </form>
+    <form class="liste_form" action="{{ path('recette_trifav')}}">
+        <input type="submit"  value="Tri par favori">
+    </form>
+</nav>
+
+
+    <div class="container">
+    <div class="colonne_3">
+    {% for recette in recettes %}
+        <div class="col_div">
+            <h4 class="liste_h4">{{ recette.nom }}
+            {% if( recette.isfav=="true" ) %}<i class="fa-solid fa-star"></i>{% endif %}</h4>
+
+            <a href="{{ path('recette_detail',{'id': recette.id}) }}" class="liste_img"><img class="liste_img" src="{{asset('image/Recette/')  }}{{ recette.image }}" alt="{{ recette.nom }}"></a>
+
+            {% if( recette.isfav=="true" ) %}
+                <a href="/recette/delfav/{{ recette.id }}"><p class="liste_p_fav">retirer au favori</p></a>
+            {% else %}
+                <a href="/recette/addfav/{{ recette.id }}"><p class="liste_p_fav">Ajouter au favori</p></a>
+            {% endif%}
+
+        </div>
+    {% endfor  %}
+    </div>
+    </div>
+
+
+
+
+
+{% endblock %}

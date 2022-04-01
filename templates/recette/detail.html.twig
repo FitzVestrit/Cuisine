@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}detail {% endblock %}
+{% block body %}
+<header>{% include ('header.html.twig') %}</header>
+
+<div class="detail_div">
+    <h1>Recette  {{ recette.nom }}</h1>
+    <img class="detail_img" src="{{asset('image/Recette/')  }}{{ recette.image }}" alt="{{ recette.nom }}">
+
+    <h4>Recette</h4>
+    <p class="detail_p"> {{ recette.ing1 }} : {{ recette.qte1 }}</p>
+    <p class="detail_p"> {{ recette.ing2 }} : {{ recette.qte2 }}</p>
+    <p class="detail_p"> {{ recette.ing3 }} : {{ recette.qte3 }}</p>
+
+    <p>{{ recette.description }}</p>
+    <form class="liste_form" action="{{ path('recette_del',{'id': recette.id}) }}">
+        <input type="submit"  value="Supprimer">
+    </form>
+</div>
+{% endblock %}
